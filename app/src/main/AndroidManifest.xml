@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AirlineManagement">
-        <activity android:name=".Admin.Fetch.FetchFlights.Reschedule"></activity>
+        <activity android:name=".Admin.Fetch.FetchPilot.FetchPilots"></activity>
+        <activity android:name=".Admin.Fetch.Reschedule" />
         <activity android:name=".Admin.Fetch.FetchUsers.FetchUsers" />
         <activity
             android:name=".Admin.Fetch.FetchFlights.FetchFlights"

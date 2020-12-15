@@ -1,4 +1,4 @@
-package com.ryms.airlinemanagement.Admin.Fetch.FetchFlights;
+package com.ryms.airlinemanagement.Admin.Fetch;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ryms.airlinemanagement.Config;
-import com.ryms.airlinemanagement.Login;
 import com.ryms.airlinemanagement.R;
-import com.ryms.airlinemanagement.User.TicketDetails;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;

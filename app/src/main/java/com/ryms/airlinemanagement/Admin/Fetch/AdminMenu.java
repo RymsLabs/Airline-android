@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.ryms.airlinemanagement.Admin.Fetch.FetchFlights.FetchFlights;
+import com.ryms.airlinemanagement.Admin.Fetch.FetchPilot.FetchPilots;
 import com.ryms.airlinemanagement.Admin.Fetch.FetchUsers.FetchUsers;
 import com.ryms.airlinemanagement.R;
 
@@ -29,7 +30,7 @@ public class AdminMenu extends AppCompatActivity {
     }
 
     public void goToFetchPilots(View view){
-        Intent intent = new Intent(this, FetchFlights.class);
+        Intent intent = new Intent(this, FetchPilots.class);
         startActivity(intent);
     }
 }

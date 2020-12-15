@@ -1,4 +1,4 @@
-package com.ryms.airlinemanagement.Admin.Fetch.FetchFlights;
+package com.ryms.airlinemanagement.Admin.Fetch.FetchPilot;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.ryms.airlinemanagement.Admin.Fetch.FetchUsers.FetchUsers;
+import com.ryms.airlinemanagement.Admin.Fetch.FetchUsers.FetchUsersAdapter;
+import com.ryms.airlinemanagement.Admin.Fetch.FetchUsers.FetchUsersModel;
 import com.ryms.airlinemanagement.Config;
 import com.ryms.airlinemanagement.R;
 
@@ -19,7 +22,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -28,35 +30,35 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class FetchFlights extends AppCompatActivity {
+public class FetchPilots extends AppCompatActivity {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    final ArrayList<FetchFlightsModel> modelArrayList = new ArrayList<>();
-    FetchFlightsAdapter fetchFlightsAdapter;
+    final ArrayList<FetchPilotsModel> modelArrayList = new ArrayList<>();
+    FetchPilotsAdapter fetchPilotsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fetch_flights);
+        setContentView(R.layout.activity_fetch_pilot);
 
         RecyclerView recyclerView;
-        recyclerView = findViewById(R.id.recylerViewFF);
+        recyclerView = findViewById(R.id.recyclerViewFP);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        fetchFlightsAdapter = new FetchFlightsAdapter(modelArrayList);
-        recyclerView.setAdapter(fetchFlightsAdapter);
+        fetchPilotsAdapter = new FetchPilotsAdapter(modelArrayList);
+        recyclerView.setAdapter(fetchPilotsAdapter);
 
-        fetchAllFlights();
+        fetchAllPilots();
     }
 
-    public void fetchAllFlights() {
+    public void fetchAllPilots() {
 
         modelArrayList.clear();
 
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(Config.FETCH_ALL_FLIGHTS)
+                .url(Config.FETCH_ALL_PILOTS)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -80,11 +82,11 @@ public class FetchFlights extends AppCompatActivity {
                 }
                 if (response.code() != 200) {
                     final JSONObject finalJsonObject = jsonObject;
-                    FetchFlights.this.runOnUiThread(new Runnable() {
+                    FetchPilots.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                Toast.makeText(FetchFlights.this, finalJsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                                Toast.makeText(FetchPilots.this, finalJsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -98,23 +100,25 @@ public class FetchFlights extends AppCompatActivity {
                     JSONObject temp;
                     for (int i = 0; i < message.length(); i++) {
                         temp = message.getJSONObject(i);
-                        FetchFlightsModel model = new FetchFlightsModel();
-                        model.flightIdFF = temp.getString("flightId");
-                        model.departureFF = temp.getString("departure");
-                        model.arrivalFF = temp.getString("arrival");
-                        model.depTimeFF = temp.getString("departure_time");
-                        model.arrTimeFF = temp.getString("arrival_time");
-                        model.seatsFF = temp.getString("seats");
+                        FetchPilotsModel model = new FetchPilotsModel();
+                        model.firstName = temp.getString("firstName");
+                        model.lastName = temp.getString("lastName");
+                        model.flyingSince = "2008";
+                        model.flightId = temp.getString("flightId");
+                        model.departureFP = temp.getString("departure");
+                        model.arrivalFP = temp.getString("arrival");
+                        model.departureTime = temp.getString("departure_time");
+                        model.arrivalTime = temp.getString("arrival_time");
                         modelArrayList.add(model);
                     }
-                    FetchFlights.this.runOnUiThread(new Runnable() {
+                    FetchPilots.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            fetchFlightsAdapter.notifyDataSetChanged();
+                            fetchPilotsAdapter.notifyDataSetChanged();
                         }
                     });
                 } catch (JSONException e) {
-                    e.printStackTrace();fetchFlightsAdapter.notifyDataSetChanged();
+                    e.printStackTrace();
                 }
             }
         });

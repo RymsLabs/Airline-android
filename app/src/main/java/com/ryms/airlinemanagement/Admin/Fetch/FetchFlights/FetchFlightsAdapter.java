@@ -11,11 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ryms.airlinemanagement.Admin.Fetch.Reschedule;
 import com.ryms.airlinemanagement.R;
-import com.ryms.airlinemanagement.User.TicketDetails;
 
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 public class FetchFlightsAdapter extends RecyclerView.Adapter<FetchFlightsAdapter.MyHolder> {
 
