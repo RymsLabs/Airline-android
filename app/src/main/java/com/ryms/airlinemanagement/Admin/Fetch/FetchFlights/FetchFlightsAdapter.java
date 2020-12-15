@@ -1,6 +1,7 @@
 package com.ryms.airlinemanagement.Admin.Fetch.FetchFlights;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ryms.airlinemanagement.R;
+import com.ryms.airlinemanagement.User.TicketDetails;
 
 import java.util.ArrayList;
 
@@ -55,6 +57,14 @@ public class FetchFlightsAdapter extends RecyclerView.Adapter<FetchFlightsAdapte
         holder.arrTimeFF.setText(modelArrayList.get(position).arrTimeFF);
         holder.seatsFF.setText(modelArrayList.get(position).seatsFF);
 
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(holder.imageView.getContext(), Reschedule.class);
+                intent.putExtra("ticketId", modelArrayList.get(position).flightIdFF);
+                holder.imageView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

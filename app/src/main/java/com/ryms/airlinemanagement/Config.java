@@ -11,6 +11,8 @@ public class Config {
     public static final String TICKET_HISTORY = BASE_URL+"user/ticket/history/";
 
     public static final String CHECK_IN_USER = BASE_URL+"employee/checkin/";
+
     public static final String FETCH_ALL_USERS = BASE_URL+"admin/users";
     public static final String FETCH_ALL_FLIGHTS = BASE_URL+"admin/flight";
+    public static final String RESCHEDULE = BASE_URL+"admin/reschedule/";
 }

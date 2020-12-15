@@ -37,12 +37,11 @@ import okhttp3.Response;
 public class TicketDetails extends AppCompatActivity {
     String TAG = "GenerateQRCode";
     ImageView qrCode;
-    EditText ticket_id;
     Button generate;
     String inputValue;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
-    int ticketId = 1;
+    int ticketId;
     TextView isCheckedIn, departure, arrival, arrival_time, departure_time;
 
     @Override
@@ -57,6 +56,9 @@ public class TicketDetails extends AppCompatActivity {
         arrival = (TextView) findViewById(R.id.arrival);
         arrival_time = (TextView) findViewById(R.id.departureTime);
         departure_time = (TextView) findViewById(R.id.arrivalTime);
+
+        Bundle bundle = getIntent().getExtras();
+        ticketId = Integer.parseInt(bundle.getString("ticketId"));
 
         getTicketDetails();
 
@@ -84,8 +86,6 @@ public class TicketDetails extends AppCompatActivity {
                     } catch (WriterException e) {
                         Log.v(TAG, e.toString());
                     }
-                } else {
-                    ticket_id.setError("Required");
                 }
             }
         });
