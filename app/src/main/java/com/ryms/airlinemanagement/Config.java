@@ -9,4 +9,6 @@ public class Config {
 
     public static final String TICKET_DETAILS = BASE_URL+"ticket/";
     public static final String TICKET_HISTORY = BASE_URL+"user/ticket/history/";
+
+    public static final String CHECK_IN_USER = BASE_URL+"employee/checkin/";
 }

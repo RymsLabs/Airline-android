@@ -1,4 +1,4 @@
-package com.ryms.airlinemanagement;
+package com.ryms.airlinemanagement.User.TicketHistory;
 
 public class HistoryModel {
 

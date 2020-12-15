@@ -1,4 +1,4 @@
-package com.ryms.airlinemanagement;
+package com.ryms.airlinemanagement.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.WriterException;
+import com.ryms.airlinemanagement.Config;
+import com.ryms.airlinemanagement.R;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;

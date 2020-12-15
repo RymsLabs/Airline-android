@@ -1,4 +1,4 @@
-package com.ryms.airlinemanagement;
+package com.ryms.airlinemanagement.User.TicketHistory;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.ryms.airlinemanagement.R;
+import com.ryms.airlinemanagement.User.TicketDetails;
 
 import java.util.ArrayList;
 

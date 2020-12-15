@@ -1,10 +1,13 @@
-package com.ryms.airlinemanagement;
+package com.ryms.airlinemanagement.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.ryms.airlinemanagement.R;
+import com.ryms.airlinemanagement.User.TicketHistory.TicketHistory;
 
 public class UserMenu extends AppCompatActivity {
 
@@ -15,7 +18,7 @@ public class UserMenu extends AppCompatActivity {
     }
 
     public void goToBookTickets(View view){
-        Intent intent = new Intent(this, BookTickets.class);
+        Intent intent = new Intent(this, FlightSearch.class);
         startActivity(intent);
     }
 

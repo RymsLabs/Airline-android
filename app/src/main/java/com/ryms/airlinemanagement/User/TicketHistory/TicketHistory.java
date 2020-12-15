@@ -1,18 +1,15 @@
-package com.ryms.airlinemanagement;
+package com.ryms.airlinemanagement.User.TicketHistory;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.ryms.airlinemanagement.Config;
+import com.ryms.airlinemanagement.R;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -21,11 +18,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
-import java.nio.charset.StandardCharsets;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;

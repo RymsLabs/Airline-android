@@ -1,14 +1,16 @@
-package com.ryms.airlinemanagement;
+package com.ryms.airlinemanagement.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Booking extends AppCompatActivity {
+import com.ryms.airlinemanagement.R;
+
+public class FlightSearch extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking);
+        setContentView(R.layout.activity_flights);
     }
 }
