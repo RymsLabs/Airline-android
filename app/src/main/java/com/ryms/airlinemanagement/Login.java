@@ -43,8 +43,8 @@ public class Login extends AppCompatActivity {
         admin = (RadioButton) findViewById(R.id.admin);
     }
 
-    public void goToFlights() {
-        Intent intent = new Intent(this, Flights.class);
+    public void goToUserMenu() {
+        Intent intent = new Intent(this, UserMenu.class);
         startActivity(intent);
     }
     public void goToEmployeeMenu() {
@@ -74,11 +74,11 @@ public class Login extends AppCompatActivity {
 
         RequestBody body = RequestBody.create(String.valueOf(jsonBody), JSON);
         String requestUrl;
-        if(user.isChecked() == true){
+        if(user.isChecked()){
             requestUrl = Config.USER_LOGIN;
             Log.d("LOGIN", ("Creating req with url: " + requestUrl));
         }
-        if(employee.isChecked() == true){
+        else if(employee.isChecked()){
             requestUrl = Config.EMPLOYEE_LOGIN;
             Log.d("LOGIN", ("Creating req with url: " + requestUrl));
         }
@@ -129,7 +129,7 @@ public class Login extends AppCompatActivity {
                         result = Integer.parseInt(message.getString("@result"));
                         if(result==1){
                             if(user.isChecked() == true){
-                                goToFlights();
+                                goToUserMenu();
                             }
                             else if(employee.isChecked() == true){
                                 goToEmployeeMenu();
