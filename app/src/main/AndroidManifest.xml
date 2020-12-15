@@ -3,6 +3,7 @@
     package="com.ryms.airlinemanagement">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AirlineManagement">
-        <activity android:name=".EmployeeMenu"></activity>
+        <activity android:name=".QrCodeScanner"></activity>
+        <activity android:name=".EmployeeMenu"
+            android:exported="true"/>
         <activity android:name=".TicketDetails" />
         <activity android:name=".TicketHistory" />
         <activity android:name=".Booking" />

@@ -44,8 +44,12 @@ public class Login extends AppCompatActivity {
     }
 
     public void goToFlights() {
-        Intent i = new Intent(this, Flights.class);
-        startActivity(i);
+        Intent intent = new Intent(this, Flights.class);
+        startActivity(intent);
+    }
+    public void goToEmployeeMenu() {
+        Intent intent = new Intent(this, EmployeeMenu.class);
+        startActivity(intent);
     }
 
     public void loginPressed(View view) {
@@ -72,15 +76,17 @@ public class Login extends AppCompatActivity {
         String requestUrl;
         if(user.isChecked() == true){
             requestUrl = Config.USER_LOGIN;
+            Log.d("LOGIN", ("Creating req with url: " + requestUrl));
         }
-        else if(employee.isChecked() == true){
+        if(employee.isChecked() == true){
             requestUrl = Config.EMPLOYEE_LOGIN;
+            Log.d("LOGIN", ("Creating req with url: " + requestUrl));
         }
         else {
             requestUrl = Config.ADMIN_LOGIN;
+            Log.d("LOGIN", ("Creating req with url: " + requestUrl));
         }
 
-        Log.d("LOGIN", ("Creating req with url: " + Config.USER_LOGIN));
         Request request = new Request.Builder()
                 .url(requestUrl)
                 .post(body)
@@ -122,7 +128,15 @@ public class Login extends AppCompatActivity {
                         message = jsonObject.getJSONObject("message");
                         result = Integer.parseInt(message.getString("@result"));
                         if(result==1){
-                            goToFlights();
+                            if(user.isChecked() == true){
+                                goToFlights();
+                            }
+                            else if(employee.isChecked() == true){
+                                goToEmployeeMenu();
+                            }
+                            else {
+//
+                            }
                         }
                         else{
                             Log.d("Chalja","kuch nahi hona");
