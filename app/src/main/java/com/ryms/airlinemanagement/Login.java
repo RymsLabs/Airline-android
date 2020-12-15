@@ -75,8 +75,8 @@ public class Login extends AppCompatActivity {
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("email", email.getText().toString());
-            jsonBody.put("password", password.getText().toString());
+            jsonBody.put("email", emailTxt);
+            jsonBody.put("password", passTxt);
         } catch (JSONException e) {
             e.printStackTrace();
         }

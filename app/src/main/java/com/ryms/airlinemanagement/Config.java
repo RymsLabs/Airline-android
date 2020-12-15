@@ -18,4 +18,6 @@ public class Config {
     public static final String FETCH_ALL_FLIGHTS = BASE_URL+"admin/flight";
     public static final String FETCH_ALL_PILOTS = BASE_URL+"admin/pilot";
     public static final String RESCHEDULE = BASE_URL+"admin/reschedule/";
+
+    public static final String FLIGHT_FILTER = BASE_URL+"flight/filter";
 }

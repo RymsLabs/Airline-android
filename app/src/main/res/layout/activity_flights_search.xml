@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".User.FlightSearch">
+    tools:context=".User.FlightSearch.FlightSearch">
 
     <TextView
         android:id="@+id/textView10"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/getDeparture"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/getArrival"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -92,12 +92,12 @@
         android:layout_marginTop="30dp"
         android:text="Date"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3"
+        app:layout_constraintEnd_toStartOf="@+id/getDate"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/getDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -113,12 +113,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:onClick="search"
         android:text="Search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/getDate" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewFS"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"

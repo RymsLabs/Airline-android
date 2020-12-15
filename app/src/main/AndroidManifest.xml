@@ -37,7 +37,7 @@
             android:exported="true" />
         <activity android:name=".User.Booking" />
         <activity android:name=".Signup" />
-        <activity android:name=".User.FlightSearch" />
+        <activity android:name=".User.FlightSearch.FlightSearch" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
