@@ -23,7 +23,8 @@
         <activity
             android:name=".TicketDetails"
             android:exported="true" />
-        <activity android:name=".TicketHistory" />
+        <activity android:name=".TicketHistory"
+            android:exported="true"/>
         <activity android:name=".Booking" />
         <activity android:name=".Signup" />
         <activity android:name=".BookTickets" />
