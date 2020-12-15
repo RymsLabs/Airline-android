@@ -61,7 +61,7 @@
 
     <EditText
         android:id="@+id/getDeparture"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:ems="10"
@@ -74,7 +74,7 @@
 
     <EditText
         android:id="@+id/getArrival"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="arrival"

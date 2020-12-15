@@ -39,11 +39,15 @@ public class FlightSearch extends AppCompatActivity {
     final ArrayList<FlightSearchModel> modelArrayList = new ArrayList<>();
     FlightSearchAdapter flightSearchAdapter;
     EditText getDeparture, getArrival, getDate;
+    int uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flights_search);
+
+        Bundle bundle = getIntent().getExtras();
+        uid = bundle.getInt("uid");
 
         getDeparture = (EditText) findViewById(R.id.getDeparture);
         getArrival = (EditText) findViewById(R.id.getArrival);
@@ -134,6 +138,7 @@ public class FlightSearch extends AppCompatActivity {
                         model.DepartmentTime = temp.getString("departure_time");
                         model.ArrivalTime = temp.getString("arrival_time");
                         model.Seats = temp.getString("seats");
+                        model.uid = uid;
                         modelArrayList.add(model);
                     }
                     FlightSearch.this.runOnUiThread(new Runnable() {

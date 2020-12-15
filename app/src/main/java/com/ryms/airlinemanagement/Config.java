@@ -20,4 +20,5 @@ public class Config {
     public static final String RESCHEDULE = BASE_URL+"admin/reschedule/";
 
     public static final String FLIGHT_FILTER = BASE_URL+"flight/filter";
+    public static final String BOOK_FLIGHT = BASE_URL+"user/flight";
 }

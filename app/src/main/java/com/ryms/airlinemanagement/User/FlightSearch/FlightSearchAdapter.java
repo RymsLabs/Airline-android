@@ -1,5 +1,6 @@
 package com.ryms.airlinemanagement.User.FlightSearch;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ryms.airlinemanagement.Admin.Fetch.FetchUsers.FetchUsersAdapter;
 import com.ryms.airlinemanagement.Admin.Fetch.FetchUsers.FetchUsersModel;
 import com.ryms.airlinemanagement.R;
+import com.ryms.airlinemanagement.User.Booking;
+import com.ryms.airlinemanagement.User.TicketDetails;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,7 @@ public class FlightSearchAdapter extends RecyclerView.Adapter<FlightSearchAdapte
     public class MyHolder extends RecyclerView.ViewHolder {
         public TextView FlightId, Departure, Arrival, DepartmentTime, ArrivalTime, Seats;
         public ImageView imageView;
+
 
         public MyHolder(View view) {
             super(view);
@@ -55,6 +59,16 @@ public class FlightSearchAdapter extends RecyclerView.Adapter<FlightSearchAdapte
         holder.DepartmentTime.setText(modelArrayList.get(position).DepartmentTime);
         holder.ArrivalTime.setText(modelArrayList.get(position).ArrivalTime);
         holder.Seats.setText(modelArrayList.get(position).Seats);
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.imageView.getContext(), Booking.class);
+                intent.putExtra("flightId", modelArrayList.get(position).FlightId);
+                intent.putExtra("uid",modelArrayList.get(position).uid);
+                holder.imageView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

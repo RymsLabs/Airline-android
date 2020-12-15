@@ -32,13 +32,15 @@ public class TicketHistory extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     final ArrayList<HistoryModel> modelArrayList = new ArrayList<>();
     HistoryAdapter historyAdapter;
-    String id="1";
+    int uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_history);
 
+        Bundle bundle = getIntent().getExtras();
+        uid = bundle.getInt("uid");
 
         RecyclerView recyclerView;
         recyclerView = findViewById(R.id.recyclerView);
@@ -57,7 +59,7 @@ public class TicketHistory extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(Config.TICKET_HISTORY + id)
+                .url(Config.TICKET_HISTORY + uid)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {

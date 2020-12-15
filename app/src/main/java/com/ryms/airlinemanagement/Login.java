@@ -46,18 +46,21 @@ public class Login extends AppCompatActivity {
         admin = (RadioButton) findViewById(R.id.admin);
     }
 
-    public void goToUserMenu() {
+    public void goToUserMenu(int id) {
         Intent intent = new Intent(this, UserMenu.class);
+        intent.putExtra("uid", id);
         startActivity(intent);
     }
 
-    public void goToEmployeeMenu() {
+    public void goToEmployeeMenu(int id) {
         Intent intent = new Intent(this, EmployeeMenu.class);
+        intent.putExtra("eid", id);
         startActivity(intent);
     }
 
-    public void goToAdminMenu() {
+    public void goToAdminMenu(int id) {
         Intent intent = new Intent(this, AdminMenu.class);
+        intent.putExtra("aid", id);
         startActivity(intent);
     }
 
@@ -130,20 +133,22 @@ public class Login extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     JSONObject message;
-                    int result;
                     try {
-                        message = jsonObject.getJSONObject("message");
-                        result = Integer.parseInt(message.getString("@result"));
-                        if (result == 1) {
+                        if(jsonObject.isNull("message")){
+                            Toast toast = Toast.makeText(Login.this, "User doesn't exist", Toast.LENGTH_LONG);
+                        }
+                        else {
+                            message = jsonObject.getJSONObject("message");
                             if (user.isChecked() == true) {
-                                goToUserMenu();
+                                int uid = message.getInt("uid");
+                                goToUserMenu(uid);
                             } else if (employee.isChecked() == true) {
-                                goToEmployeeMenu();
+                                int eid = message.getInt("eid");
+                                goToEmployeeMenu(eid);
                             } else {
-                                goToAdminMenu();
+                                int aid = message.getInt("aid");
+                                goToAdminMenu(aid);
                             }
-                        } else {
-                            Log.d("Chalja", "kuch nahi hona");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

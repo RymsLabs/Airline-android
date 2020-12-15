@@ -93,7 +93,7 @@ public class EmployeeMenu extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     EmployeeMenu.this.runOnUiThread(new Runnable() {
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "Incorrect username or password!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Incorrect Id", Toast.LENGTH_LONG).show();
                         }
                     });
                     throw new IOException("Unexpected code " + response);
@@ -114,7 +114,9 @@ public class EmployeeMenu extends AppCompatActivity {
                             try {
                                 type = finalJsonObject.getString("type");
                                 if (type.equals("success")) {
-                                    Toast.makeText(EmployeeMenu.this, "Checked in : Success", Toast.LENGTH_LONG).show();
+                                    JSONObject message = finalJsonObject.getJSONObject("message");
+                                    String result = message.getString("@result");
+                                    Toast.makeText(EmployeeMenu.this, result, Toast.LENGTH_LONG).show();
                                 } else {
                                     Toast.makeText(EmployeeMenu.this, "Checked in : Failure Get Out", Toast.LENGTH_LONG).show();
                                 }

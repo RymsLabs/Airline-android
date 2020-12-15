@@ -4,6 +4,7 @@ public class FlightSearchModel {
 
     private int image;
     public String FlightId, Departure, Arrival, DepartmentTime, ArrivalTime, Seats;
+    public int uid;
 
     public int getImage() {
         return image;

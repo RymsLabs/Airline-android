@@ -141,7 +141,7 @@ public class TicketDetails extends AppCompatActivity {
                     a = message.getString("arrival");
                     at = message.getString("arrival_time");
                     dt = message.getString("departure_time");
-                    if(ic=="1"){
+                    if(ic.equals("1")){
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
