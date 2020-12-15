@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.ryms.airlinemanagement.Admin.Fetch.AdminMenu;
 import com.ryms.airlinemanagement.Employee.EmployeeMenu;
 import com.ryms.airlinemanagement.User.UserMenu;
 
@@ -49,8 +50,14 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(this, UserMenu.class);
         startActivity(intent);
     }
+
     public void goToEmployeeMenu() {
         Intent intent = new Intent(this, EmployeeMenu.class);
+        startActivity(intent);
+    }
+
+    public void goToAdminMenu() {
+        Intent intent = new Intent(this, AdminMenu.class);
         startActivity(intent);
     }
 
@@ -137,7 +144,7 @@ public class Login extends AppCompatActivity {
                                 goToEmployeeMenu();
                             }
                             else {
-//
+                                goToAdminMenu();
                             }
                         }
                         else{

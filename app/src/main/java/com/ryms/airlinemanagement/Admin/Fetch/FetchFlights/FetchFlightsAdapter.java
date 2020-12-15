@@ -15,6 +15,7 @@ import com.ryms.airlinemanagement.R;
 import com.ryms.airlinemanagement.User.TicketDetails;
 
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 
 public class FetchFlightsAdapter extends RecyclerView.Adapter<FetchFlightsAdapter.MyHolder> {
 
@@ -23,7 +24,6 @@ public class FetchFlightsAdapter extends RecyclerView.Adapter<FetchFlightsAdapte
     public class MyHolder extends RecyclerView.ViewHolder {
         public TextView flightIdFF, departureFF, arrivalFF, depTimeFF, arrTimeFF, seatsFF;
         public ImageView imageView;
-
         public MyHolder(View view) {
             super(view);
             flightIdFF = (TextView) view.findViewById(R.id.flightIdFF);
@@ -61,7 +61,7 @@ public class FetchFlightsAdapter extends RecyclerView.Adapter<FetchFlightsAdapte
             @Override
             public void onClick(View v) {
                 Intent intent =  new Intent(holder.imageView.getContext(), Reschedule.class);
-                intent.putExtra("ticketId", modelArrayList.get(position).flightIdFF);
+                intent.putExtra("flightId", modelArrayList.get(position).flightIdFF);
                 holder.imageView.getContext().startActivity(intent);
             }
         });

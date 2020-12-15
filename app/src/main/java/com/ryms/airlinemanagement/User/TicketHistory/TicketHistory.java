@@ -106,6 +106,7 @@ public class TicketHistory extends AppCompatActivity {
                         model.HisDT = temp.getString("departure_time");
                         model.HisAT = temp.getString("arrival_time");
                         model.ticketId = temp.getString("ticketId");
+                        model.setImage(R.drawable.shadowfight);
                         modelArrayList.add(model);
                     }
                     TicketHistory.this.runOnUiThread(new Runnable() {

@@ -31,7 +31,7 @@ import okhttp3.Response;
 public class Reschedule extends AppCompatActivity {
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     EditText changeDT, changeAT;
-    int flightId;
+    String flightId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class Reschedule extends AppCompatActivity {
         changeAT = findViewById(R.id.changeAT);
 
         Bundle bundle = getIntent().getExtras();
-        flightId = Integer.parseInt(bundle.getString("flightId"));
+        flightId = bundle.getString("flightId");
     }
 
     public void reschedule(View view) {
@@ -59,12 +59,13 @@ public class Reschedule extends AppCompatActivity {
 
         JSONObject jsonBody = new JSONObject();
         try {
+            jsonBody.put("flightId", flightId);
             jsonBody.put("dTime", changeDepart);
             jsonBody.put("aTime", changeArrival);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        Log.d("BODY", jsonBody.toString());
         RequestBody body = RequestBody.create(String.valueOf(jsonBody), JSON);
         String requestUrl = Config.RESCHEDULE;
         Request request = new Request.Builder()

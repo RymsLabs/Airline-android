@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -109,11 +110,11 @@ public class FetchFlights extends AppCompatActivity {
                     FetchFlights.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            fetchFlightsAdapter.notifyDataSetChanged();
+
                         }
                     });
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    e.printStackTrace();fetchFlightsAdapter.notifyDataSetChanged();
                 }
             }
         });

@@ -56,13 +56,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyHolder
 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent =  new Intent(holder.imageView.getContext(), TicketDetails.class);
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.imageView.getContext(), TicketDetails.class);
                 intent.putExtra("ticketId", modelArrayList.get(position).ticketId);
                 holder.imageView.getContext().startActivity(intent);
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
