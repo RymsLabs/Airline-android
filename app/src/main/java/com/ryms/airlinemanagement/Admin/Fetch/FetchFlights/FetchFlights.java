@@ -39,16 +39,16 @@ public class FetchFlights extends AppCompatActivity {
         setContentView(R.layout.activity_fetch_flights);
 
         RecyclerView recyclerView;
-        recyclerView = findViewById(R.id.recylerViewFU);
+        recyclerView = findViewById(R.id.recylerViewFF);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         fetchFlightsAdapter = new FetchFlightsAdapter(modelArrayList);
         recyclerView.setAdapter(fetchFlightsAdapter);
 
-        fetchAllUsers();
+        fetchAllFlights();
     }
 
-    public void fetchAllUsers() {
+    public void fetchAllFlights() {
 
         modelArrayList.clear();
 
