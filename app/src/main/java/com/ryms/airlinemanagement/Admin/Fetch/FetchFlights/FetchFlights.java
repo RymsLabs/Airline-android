@@ -1,4 +1,4 @@
-package com.ryms.airlinemanagement.User.TicketHistory;
+package com.ryms.airlinemanagement.Admin.Fetch.FetchFlights;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,37 +27,35 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class TicketHistory extends AppCompatActivity {
+public class FetchFlights extends AppCompatActivity {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-    final ArrayList<HistoryModel> modelArrayList = new ArrayList<>();
-    HistoryAdapter historyAdapter;
-    String id="1";
+    final ArrayList<FetchFlightsModel> modelArrayList = new ArrayList<>();
+    FetchFlightsAdapter fetchFlightsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ticket_history);
-
+        setContentView(R.layout.activity_fetch_flights);
 
         RecyclerView recyclerView;
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recylerViewFU);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        historyAdapter = new HistoryAdapter(modelArrayList);
-        recyclerView.setAdapter(historyAdapter);
+        fetchFlightsAdapter = new FetchFlightsAdapter(modelArrayList);
+        recyclerView.setAdapter(fetchFlightsAdapter);
 
-        getAllTickets();
+        fetchAllUsers();
     }
 
-    public void getAllTickets() {
+    public void fetchAllUsers() {
 
         modelArrayList.clear();
 
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(Config.TICKET_HISTORY + id)
+                .url(Config.FETCH_ALL_FLIGHTS)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -81,11 +79,11 @@ public class TicketHistory extends AppCompatActivity {
                 }
                 if (response.code() != 200) {
                     final JSONObject finalJsonObject = jsonObject;
-                    TicketHistory.this.runOnUiThread(new Runnable() {
+                    FetchFlights.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                Toast.makeText(TicketHistory.this, finalJsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                                Toast.makeText(FetchFlights.this, finalJsonObject.getString("message"), Toast.LENGTH_LONG).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -99,19 +97,19 @@ public class TicketHistory extends AppCompatActivity {
                     JSONObject temp;
                     for (int i = 0; i < message.length(); i++) {
                         temp = message.getJSONObject(i);
-                        HistoryModel model = new HistoryModel();
-                        model.HisId = temp.getString("ticketId");
-                        model.HisDep = temp.getString("departure");
-                        model.HisArr = temp.getString("arrival");
-                        model.HisDT = temp.getString("departure_time");
-                        model.HisAT = temp.getString("arrival_time");
-                        model.ticketId = temp.getString("ticketId");
+                        FetchFlightsModel model = new FetchFlightsModel();
+                        model.flightIdFF = temp.getString("flightId");
+                        model.departureFF = temp.getString("departure");
+                        model.arrivalFF = temp.getString("arrival");
+                        model.depTimeFF = temp.getString("departure_time");
+                        model.arrTimeFF = temp.getString("arrival_time");
+                        model.seatsFF = temp.getString("seats");
                         modelArrayList.add(model);
                     }
-                    TicketHistory.this.runOnUiThread(new Runnable() {
+                    FetchFlights.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            historyAdapter.notifyDataSetChanged();
+                            fetchFlightsAdapter.notifyDataSetChanged();
                         }
                     });
                 } catch (JSONException e) {

@@ -13,9 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AirlineManagement">
-        <activity android:name=".User.UserMenu"
-            android:exported="true">
-        </activity>
+        <activity android:name=".Admin.Fetch.FetchUsers.FetchUsers"></activity>
+        <activity
+            android:name=".Admin.Fetch.FetchFlights.FetchFlights"
+            android:exported="true" />
+        <activity android:name=".Admin.Fetch.AdminMenu" />
+        <activity
+            android:name=".User.UserMenu"
+            android:exported="true" />
         <activity android:name=".Employee.QrCodeScanner" />
         <activity
             android:name=".Employee.EmployeeMenu"
@@ -23,8 +28,9 @@
         <activity
             android:name=".User.TicketDetails"
             android:exported="true" />
-        <activity android:name=".User.TicketHistory.TicketHistory"
-            android:exported="true"/>
+        <activity
+            android:name=".User.TicketHistory.TicketHistory"
+            android:exported="true" />
         <activity android:name=".User.Booking" />
         <activity android:name=".Signup" />
         <activity android:name=".User.FlightSearch" />
