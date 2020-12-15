@@ -83,15 +83,13 @@ public class Login extends AppCompatActivity {
 
         RequestBody body = RequestBody.create(String.valueOf(jsonBody), JSON);
         String requestUrl;
-        if(user.isChecked()){
+        if (user.isChecked()) {
             requestUrl = Config.USER_LOGIN;
             Log.d("LOGIN", ("Creating req with url: " + requestUrl));
-        }
-        else if(employee.isChecked()){
+        } else if (employee.isChecked()) {
             requestUrl = Config.EMPLOYEE_LOGIN;
             Log.d("LOGIN", ("Creating req with url: " + requestUrl));
-        }
-        else {
+        } else {
             requestUrl = Config.ADMIN_LOGIN;
             Log.d("LOGIN", ("Creating req with url: " + requestUrl));
         }
@@ -136,19 +134,16 @@ public class Login extends AppCompatActivity {
                     try {
                         message = jsonObject.getJSONObject("message");
                         result = Integer.parseInt(message.getString("@result"));
-                        if(result==1){
-                            if(user.isChecked() == true){
+                        if (result == 1) {
+                            if (user.isChecked() == true) {
                                 goToUserMenu();
-                            }
-                            else if(employee.isChecked() == true){
+                            } else if (employee.isChecked() == true) {
                                 goToEmployeeMenu();
-                            }
-                            else {
+                            } else {
                                 goToAdminMenu();
                             }
-                        }
-                        else{
-                            Log.d("Chalja","kuch nahi hona");
+                        } else {
+                            Log.d("Chalja", "kuch nahi hona");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -156,5 +151,10 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void signUp(View view) {
+        Intent intent = new Intent(this, Signup.class);
+        startActivity(intent);
     }
 }

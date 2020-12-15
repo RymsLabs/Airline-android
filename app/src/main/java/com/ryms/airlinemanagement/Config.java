@@ -7,6 +7,8 @@ public class Config {
     public static final String EMPLOYEE_LOGIN = BASE_URL+"employee/login/";
     public static final String ADMIN_LOGIN = BASE_URL+"admin/login/";
 
+    public static final String SIGN_UP = BASE_URL+"user/signup";
+
     public static final String TICKET_DETAILS = BASE_URL+"ticket/";
     public static final String TICKET_HISTORY = BASE_URL+"user/ticket/history/";
 
